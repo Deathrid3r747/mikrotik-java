@@ -1,4 +1,6 @@
-package me.legrange.mikrotik;
+package me.legrange.mikrotik.impl;
+
+import me.legrange.mikrotik.MikrotikApiException;
 
 /**
  * Thrown when the Mikrotik returns an error when receiving our command.
@@ -7,7 +9,8 @@ package me.legrange.mikrotik;
 public class ApiCommandException extends MikrotikApiException {
 
 
-    /** return the tag associated with this exception, if there is one */
+    /** return the tag associated with this exception, if there is one
+     * @return the tag associated with this exception. Null if there is no tag*/
     public String getTag() {
         return tag;
     }

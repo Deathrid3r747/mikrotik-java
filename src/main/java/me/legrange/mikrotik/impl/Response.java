@@ -1,4 +1,4 @@
-package me.legrange.mikrotik;
+package me.legrange.mikrotik.impl;
 
 /**
  * Super type of possible API responses
@@ -24,5 +24,5 @@ abstract class Response {
         this.tag = tag;
     }
     
-    private String tag;
+    private  String tag;
 }

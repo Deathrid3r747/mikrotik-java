@@ -1,4 +1,4 @@
-package me.legrange.mikrotik;
+package me.legrange.mikrotik.impl;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -73,9 +73,9 @@ class Command {
     List<Parameter> getParameters() {
         return params;
     }
-    private String cmd;
-    private List<Parameter> params = new LinkedList<Parameter>();
-    private List<String> queries = new LinkedList<String>();
-    private List<String> properties = new LinkedList<String>();
+    private final String cmd;
+    private final List<Parameter> params = new LinkedList<>();
+    private final List<String> queries = new LinkedList<>();
+    private final List<String> properties = new LinkedList<>();
     private String tag;
 }

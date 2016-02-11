@@ -9,24 +9,34 @@ import me.legrange.mikrotik.ResultListener;
  *
  * @author gideon
  */
-public class Example4 extends Example {
+public class AsyncCommand extends Example {
 
     public static void main(String... args) throws Exception {
-        Example4 ex = new Example4();
+        AsyncCommand ex = new AsyncCommand();
         ex.connect();
         ex.test();
         ex.disconnect();
     }
 
     private void test() throws MikrotikApiException, InterruptedException {
-       String id = con.execute("/interface/wireless/monitor .id=wlan1", new ResultListener() {
+       String id = con.execute("/interface/wireless/monitor .id=wlan1 .proplist=signal-strength", new ResultListener() {
            private int prev = 0;
 
            public void receive(Map<String, String> result) {
-               int val = Integer.parseInt(result.get("signal-strength"));
+               System.out.println(result);
+/*               int val = Integer.parseInt(result.get("signal-strength"));
                String sym = (val == prev) ? " " : ((val < prev) ? "-" : "+");
                System.out.printf("%d %s\n", val, sym);
                prev = val;
+  */          }
+
+           @Override
+           public void error(MikrotikApiException ex) {
+               throw new RuntimeException(ex.getMessage(), ex);
+           }
+
+           @Override
+           public void completed() {
            }
 
 
